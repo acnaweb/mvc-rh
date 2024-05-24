@@ -38,3 +38,4 @@ Aplicação MVC de Recursos Humanos para fins didáticos
 
  - https://spring.io/projects/spring-framework
  - https://plantuml.com/
+ - https://www.baeldung.com/thymeleaf-select-option
