@@ -33,16 +33,20 @@
                 <input type="text" class="form-control" id="nome" th:field="*{nome}">
             </div>
 
-            <label for="id_departamento">Departamentos</label>
-            <select class="form-control" id="id_departamento" th:field="*{id_departamento}">
-                <option value="">--</option>
-                <option th:each="lov : ${lovDepartamentos}" 
-                        th:value="${lov.value}" 
-                        th:text="${lov.text}"
-                        th:selected="${cargo.id_departamento != null && lov.value.equals(cargo.id_departamento)}"
-                        >
-                </option>
-            </select>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Departamento</div>
+                </div>
+                <select class="form-control" id="id_departamento" th:field="*{idDepartamento}">
+                    <option value="">--</option>
+                    <option th:each="lov : ${lovDepartamentos}" 
+                            th:value="${lov.value}" 
+                            th:text="${lov.text}"
+                            th:selected="${cargo.idDepartamento != null && lov.value.equals(cargo.idDepartamento)}"
+                            >
+                    </option>
+                </select>
+            </div>
 
 
 			<button type="submit" class="btn btn-primary btn-sm">Confirmar</button>

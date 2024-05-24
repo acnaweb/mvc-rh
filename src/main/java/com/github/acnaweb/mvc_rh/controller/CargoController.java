@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,7 @@ public class CargoController {
 
 	@GetMapping()
 	public String list(Model model) {
-		List<Cargo> cargos = cargoRepository.findAll();
+		List<Cargo> cargos = cargoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 		model.addAttribute("cargos", cargos);
 		return "cargo/list";
 	}
@@ -50,7 +51,7 @@ public class CargoController {
 	@PostMapping("save")
 	public String save(@ModelAttribute FormCargo cargo) {
 
-		Departamento departamento = Optional.ofNullable(cargo.getId_departamento())
+		Departamento departamento = Optional.ofNullable(cargo.getIdDepartamento())
 			.map(id_departamento ->  departamentoRepository.getReferenceById(id_departamento))
 			.orElse(null);
 			

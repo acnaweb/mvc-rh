@@ -33,34 +33,42 @@
                 <input type="text" class="form-control" id="nome"  th:field="*{nome}">
             </div>
 
-<!-- 
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">Data de Entrada</div>
                 </div>
-                <input type="date" class="form-control" id="dataEntrada">
+                <input type="text" class="form-control" id="dataEntrada" th:field="*{dataEntrada}">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">Data de Saída</div>
                 </div>
-                <input type="date" class="form-control" id="dataSaida">
+                <input type="text" class="form-control" id="dataSaida" th:field="*{dataSaida}">
             </div>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">Salário</div>
                 </div>
-                <input type="text" class="form-control" id="salario">
+                <input type="text" class="form-control" id="salario" th:field="*{salario}">
             </div>
 
-            <label for="id_cargo">Cargo</label>
-            <select class="form-control" id="id_cargo">
-                <option value="1">Devenvolvedor</option>
-                <option value="2">Scrum Master</option>
-                <option value="3">Gerente</option>
-            </select>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Cargo</div>
+                </div>
+                <select class="form-control" id="id_cargo" th:field="*{idCargo}">
+                    <option value="">--</option>
+                    <option th:each="lov : ${lovCargos}" 
+                            th:value="${lov.value}" 
+                            th:text="${lov.text}"
+                            th:selected="${funcionario.idCargo != null && lov.value.equals(funcionario.idCargo)}"
+                            >
+                    </option>
+                </select>
+            </div>
                 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -103,13 +111,22 @@
                 </div>
                 <input type="text" class="form-control" id="cidade">
             </div>
-
-            <label for="uf">UF</label>
-            <select class="form-control" id="uf">
-                <option value="SP">São Paulo</option>
-                <option value="RJ">Rio de Janeiro</option>                
-            </select>            
- -->
+            
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">UF</div>
+                </div>
+                <select class="form-control" id="uf" th:field="*{uf}">
+                    <option value="">--</option>
+                    <option th:each="lov : ${lovUfs}" 
+                            th:value="${lov.value}" 
+                            th:text="${lov.text}"
+                            th:selected="${funcionario.uf != null && lov.value.equals(funcionario.uf)}"
+                            >
+                    </option>
+                </select>
+            </div>
+ 
             <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
             <a th:href="@{/funcionarios}" class="btn btn-secondary btn-sm">Cancelar</a>
         </form>

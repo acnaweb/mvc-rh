@@ -8,7 +8,7 @@ import com.github.acnaweb.mvc_rh.model.Departamento;
 public class FormCargo {
     private Long id;
     private String nome;
-	private Long id_departamento;
+	private Long idDepartamento;
 
     public Long getId() {
         return id;
@@ -22,12 +22,14 @@ public class FormCargo {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Long getId_departamento() {
-        return id_departamento;
+   
+    public Long getIdDepartamento() {
+        return idDepartamento;
     }
-    public void setId_departamento(Long id_departamento) {
-        this.id_departamento = id_departamento;
+    public void setIdDepartamento(Long idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
+    
 
     public Cargo toModel(Departamento departamento) {
         Cargo cargo = new Cargo();
@@ -40,16 +42,12 @@ public class FormCargo {
     public FormCargo toForm(Cargo cargo) {
         this.id = cargo.getId();
         this.nome = cargo.getNome();
-        this.id_departamento = Optional.ofNullable(cargo.getDepartamento())
+        this.idDepartamento = Optional.ofNullable(cargo.getDepartamento())
             .map(d -> d.getId())
             .orElse(null);
         return this;
     }
-    
-    @Override
-    public String toString() {
-        return "FormCargo [id=" + id + ", nome=" + nome + ", id_departamento=" + id_departamento + "]";
-    }
-
+   
+  
     
 }

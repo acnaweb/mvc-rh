@@ -3,6 +3,7 @@ package com.github.acnaweb.mvc_rh.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class DepartamentoController {
 
 	@GetMapping()
 	public String list(Model model) {
-		List<Departamento> departamentos = departamentoRepository.findAll();
+		List<Departamento> departamentos = departamentoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 		model.addAttribute("departamentos", departamentos);
 		return "departamento/list";
 	}

@@ -33,7 +33,7 @@
                <tr th:each="funcionario : ${funcionarios}">
                		<td th:text="${funcionario.id}"></td>
                    	<td th:text="${funcionario.nome}"></td>
-                   	<td></td>
+                   	<td th:text="${#numbers.formatCurrency(funcionario.salario)}"></td>
                    	<td></td>
                    	<td>
                    		<a class="btn-sm btn-primary" th:href="@{/funcionarios/update/{id}(id=${funcionario.id})}">Editar</a>

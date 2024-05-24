@@ -1,17 +1,17 @@
 package com.github.acnaweb.mvc_rh.lov;
 
 public class ListOfValues {
-    private Long value;
+    private Object value;
     private String text;
 
-    public ListOfValues(Long value, String text) {
+    public ListOfValues(Object value, String text) {
         this.value = value;
         this.text = text;
     }
-    public Long getValue() {
+    public Object getValue() {
         return value;
     }
-    public void setValue(Long value) {
+    public void setValue(Object value) {
         this.value = value;
     }
     public String getText() {
